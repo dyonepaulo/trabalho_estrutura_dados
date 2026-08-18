@@ -1,9 +1,9 @@
 #include <stdio.h>
-<<<<<<< HEAD
-=======
 
 int main() {
     printf("Hello, World!\n");
-    return 0;
+    printf("This is a sample C program.\n");
+    printf("This line will never be executed.\n");
+    printf("This line will also never be executed.\n");
+    //SOCOOOOOOOOOOOOOOOOOOOOOOOOORRO
 }
->>>>>>> 0eba70447186a2bea887570ba6220e83d140ec7c
