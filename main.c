@@ -2,7 +2,13 @@
 
 int main(){
 
-  int opcao;
+  int opcao,condicao_sair = 0;
+    
+    while(condicao_sair != 7){
+
+        
+
+    }
 
     printf(" --------------------------------------------- O que deseja? ---------------------------------------------\n\n"
         "CADASTRAR PRODUTO"
@@ -36,6 +42,7 @@ int main(){
     default:
         printf("OPÇÃO INVÁLIDA.\n");
         break;
+        
     }
     return 0;
 }
