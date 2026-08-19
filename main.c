@@ -30,17 +30,9 @@ int menu(){
     case 4:
         printf("BUSCAR PRODUTO POR ID selecionado.\n");
         break; 
+    default:
+        printf("OPÇÃO INVÁLIDA.\n");
+        break;
     }
-
-
     return 0;
-}
-
-int main(){
-
-    int 
-
-    printf("--MENU--\n escolha uma opção e digite seu numero correspondente\n");
-    scanf("%d")
-    
 }
