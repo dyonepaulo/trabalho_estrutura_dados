@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 int menu(){
+
   int opcao;
 
-    printf("O que deseja? ------------------------------------------------------------------------------------------\n\n"
+    printf(" --------------------------------------------- O que deseja? ---------------------------------------------\n\n"
         "CADASTRAR PRODUTO"
         "\tREMOVER PRODUTO"
         "\t\tLISTAR TODOS OS PRODUTOS"
@@ -19,7 +20,9 @@ int menu(){
     switch (opcao)
     {
     case 1: 
+
         printf("CADASTRAR PRODUTO selecionado.\n");
+        
         break;
     case 2: 
         printf("REMOVER PRODUTO selecionado.\n");
@@ -34,5 +37,12 @@ int menu(){
         printf("OPÇÃO INVÁLIDA.\n");
         break;
     }
+    return 0;
+}
+
+int main() {
+
+    menu();
+
     return 0;
 }

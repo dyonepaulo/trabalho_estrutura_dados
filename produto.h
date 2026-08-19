@@ -3,11 +3,12 @@
  
 typedef struct {
 
-    int id, quantidade;
+    int id;
     char* nome;
     float preco;
+    int quantidade;
 
 } produto;
 
 
-#endif ""
+#endif 
