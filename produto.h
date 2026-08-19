@@ -4,7 +4,7 @@
 typedef struct {
 
     int id;
-    char* nome;
+    char* nome[30];
     float preco;
     int quantidade;
 
