@@ -4,41 +4,39 @@
 
 int i=0;
 
-int buscarProduto(produto *ptr, int N, int ID) {
-    if(ptr[N].id == ID){
+int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
+    if(ptrEstoque[numProduto].id == ID){
         printf("Produto Encontrado: \n");
-        printf("\t\t\tID\t\tNOME\t\tPREÇO\t\tQUANTIDADE\n");
-        printf("\t\t\t%d\t\t", ptr[N].id);
-        printf("%s", ptr[N].nome);
-        printf("\t\t%.2f\t\t", ptr[N].preco);
-        printf("%d\n", ptr[N].quantidade);
+        printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+        
+        printf("%-12d", ptrEstoque[numProduto-1].id);
+        printf("%-10s", ptrEstoque[numProduto-1].nome);
+        printf("%15.2f", ptrEstoque[numProduto-1].preco);
+        printf("%15d\n", ptrEstoque[numProduto-1].quantidade);
 
         return 0;
     }
 
-    if(N == 0){
+    if(numProduto == 0){
         printf("Produto não encontrado!\n");
         return 0;
     }
 
-    return buscarProduto(ptr, N-1, ID);
+    return buscarProduto(numProduto - 1, ptrEstoque, ID);
 }
 
-int listarProduto(int N,produto *ptr) {
-    int resultado;
-
-    if(N==0){
+int listarProduto(int numProduto, produto *ptrEstoque){
+    
+    if(numProduto == 0)    
         return 0;
-    }
 
-    printf("\tID\t\tNOME\t\tPREÇO\t\tQUANTIDADE\n");
-    printf("\t%d\t\t", ptr[N-1].id);
-    printf("%s", ptr[N-1].nome);
-    printf("\t\t%.2f\t\t", ptr[N-1].preco);
-    printf("%d\n", ptr[N-1].quantidade);
+    printf("%-12d", ptrEstoque[numProduto-1].id);
+    printf("%-10s", ptrEstoque[numProduto-1].nome);
+    printf("%15.2f", ptrEstoque[numProduto-1].preco);
+    printf("%15d\n", ptrEstoque[numProduto-1].quantidade);
     
 
-    return listarProduto(N-1, ptr);
+    return listarProduto(numProduto-1, ptrEstoque);
 }
 
 int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* contador_id){   // **estoque_produtos é um ponteiro para ponteiro de produto(resumindo é o endereço do ponteiro que aponta para o vetor que tem os produtos), *tamanho_estoque é um ponteiro para inteiro, *contador_id é um ponteiro para inteiro
@@ -102,4 +100,3 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             break;
     }
 }
-
