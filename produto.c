@@ -24,7 +24,7 @@ int buscarProduto(produto *ptr, int N, int ID) {
     return buscarProduto(ptr, N-1, ID);
 }
 
-int listarProduto(int N){
+int listarProduto(int N,produto *ptr) {
     int resultado;
 
     if(N==0){
@@ -38,7 +38,7 @@ int listarProduto(int N){
     printf("%d\n", ptr[N-1].quantidade);
     
 
-    return listarProduto(N-1);
+    return listarProduto(N-1, ptr);
 }
 
 int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* contador_id){   // **estoque_produtos é um ponteiro para ponteiro de produto(resumindo é o endereço do ponteiro que aponta para o vetor que tem os produtos), *tamanho_estoque é um ponteiro para inteiro, *contador_id é um ponteiro para inteiro
