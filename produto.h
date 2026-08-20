@@ -14,6 +14,6 @@ int buscarProduto(produto *ptr, int N, int ID);
 
 int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* contador_id);
 
-int listarProduto(int N);
+int listarProduto(int N, produto *ptr);
 
 #endif 
