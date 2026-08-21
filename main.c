@@ -5,8 +5,13 @@
 int main(){
 
     int opcao,condicao_sair = 0, tamanho_estoque = 5, contador_id = 1009, id;
-    produto (*estoque_produtos) = malloc(tamanho_estoque * sizeof(produto));
-   
+    produto (*estoque_produtos) = calloc(tamanho_estoque, sizeof(produto));
+
+    if(estoque_produtos == NULL){
+        printf("Erro ao alocar memoria \n");
+        return 1;
+    }
+
     while(condicao_sair != 7){
 
         printf("----------------------------------------------------- O que deseja? -----------------------------------------------------\n\n"

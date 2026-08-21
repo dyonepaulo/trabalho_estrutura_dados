@@ -6,15 +6,17 @@ int i=0;
 
 int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
     if(ptrEstoque[numProduto].id == ID){
-        printf("Produto Encontrado: \n");
-        printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
-        
-        printf("%-12d", ptrEstoque[numProduto].id);
-        printf("%-10s", ptrEstoque[numProduto].nome);
-        printf("%15.2f", ptrEstoque[numProduto].preco);
-        printf("%15d\n", ptrEstoque[numProduto].quantidade);
+        if(ID != 0){
+            printf("Produto Encontrado: \n");
+            printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+            
+            printf("%-12d", ptrEstoque[numProduto].id);
+            printf("%-10s", ptrEstoque[numProduto].nome);
+            printf("%15.2f", ptrEstoque[numProduto].preco);
+            printf("%15d\n", ptrEstoque[numProduto].quantidade);
 
-        return 0;
+            return 0;
+        }
     }
 
     if(numProduto == 0){
