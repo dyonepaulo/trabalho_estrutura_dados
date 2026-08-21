@@ -74,11 +74,15 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             return 0;
         }
     }
-    printf("Estoque cheio, nao e possivel cadastrar mais produtos.\n-------- DESEJA AUMENTAR O ESTOQUE? --------\n/ 1 - SIM /\n/ 2 - NAO /\n/ 3 - CANCELAR (encerrar programa) / \n");
+    printf("Estoque cheio, nao e possivel cadastrar mais produtos.\n-------- DESEJA AUMENTAR O ESTOQUE? --------\n"
+        "/ 1 - SIM /\n"
+        "/ 2 - NAO /\n"
+        "/ 3 - CANCELAR (encerrar programa) / \n");
+
     scanf("%d", &escolha);
     switch (escolha) {
         case 1:
-            temp = realloc((*estoque_produtos), (*tamanho_estoque + 1) * sizeof(produto)); //redimenciona o vetor de produtos para aumentar o tamanho do estoque em 1
+            temp = realloc(*estoque_produtos, (*tamanho_estoque + 1) * sizeof(produto)); //redimenciona o vetor de produtos para aumentar o tamanho do estoque em 1
             
             if(temp == NULL){
                 printf("Erro ao alocar memoria \n");
