@@ -9,10 +9,10 @@ int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
         printf("Produto Encontrado: \n");
         printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
         
-        printf("%-12d", ptrEstoque[numProduto-1].id);
-        printf("%-10s", ptrEstoque[numProduto-1].nome);
-        printf("%15.2f", ptrEstoque[numProduto-1].preco);
-        printf("%15d\n", ptrEstoque[numProduto-1].quantidade);
+        printf("%-12d", ptrEstoque[numProduto].id);
+        printf("%-10s", ptrEstoque[numProduto].nome);
+        printf("%15.2f", ptrEstoque[numProduto].preco);
+        printf("%15d\n", ptrEstoque[numProduto].quantidade);
 
         return 0;
     }
@@ -120,6 +120,6 @@ int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
             return 0;
         }
     }
-    printf("ID %d não encontrado.", remove);
+    printf("\nID %d não encontrado.", remove);
     return 1;
 }
