@@ -6,6 +6,7 @@ int main(){
 
     int opcao,condicao_sair = 0, tamanho_estoque = 5, contador_id = 1009, id;
     produto (*estoque_produtos) = calloc(tamanho_estoque, sizeof(produto));
+    float valor_estoque = 0;
 
     if(estoque_produtos == NULL){
         printf("Erro ao alocar memoria \n");
@@ -14,7 +15,7 @@ int main(){
 
     while(condicao_sair != 7){
 
-        printf("----------------------------------------------------- O que deseja? -----------------------------------------------------\n\n"
+        printf("\n\n----------------------------------------------------- O que deseja? -----------------------------------------------------\n\n"
             "CADASTRAR PRODUTO"
             "\tREMOVER PRODUTO"
             "\t\tLISTAR TODOS OS PRODUTOS"
@@ -25,12 +26,15 @@ int main(){
             "\t\tDigite 2"
             "\t\tDigite 3"
             "\t\t\tDigite 4"
-            "\t\t\tDigite 5\n\n");
-
+            "\t\t\tDigite 5\n\n"
+            "| VALOR TOTAL DO ESTOQUE: R$ %.2f |\n\n",
+            calcular_estoque(estoque_produtos, tamanho_estoque-1, valor_estoque));
 
         if(scanf("%d", &opcao) == 0){
+
             printf("OPÇÃO INVÁLIDA.\n\n\n\n\n\n");
             while(getchar() != '\n'); 
+
         }else{
 
             switch (opcao)

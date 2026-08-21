@@ -4,6 +4,7 @@
 
 int i=0;
 
+
 int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
     if(ptrEstoque[numProduto].id == ID){
         if(ID != 0){
@@ -124,4 +125,16 @@ int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
     }
     printf("\nID %d não encontrado.\n", remove);
     return 1;
+}
+
+float calcular_estoque(produto *estoque_produtos,int tamanho_estoque,float soma){
+
+    soma += estoque_produtos[tamanho_estoque].preco * estoque_produtos[tamanho_estoque].quantidade;
+
+    if(tamanho_estoque == 0){
+
+        return soma;
+
+    }
+    return calcular_estoque(estoque_produtos, tamanho_estoque - 1, soma);
 }

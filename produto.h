@@ -10,12 +10,14 @@ typedef struct {
 
 } produto;
 
-int buscarProduto(int numProduto, produto *ptrEstoque, int ID);
+int buscarProduto(int numProduto, produto *estoque_produtos, int ID);
 
 int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* contador_id);
 
-int listarProduto(int numProduto, produto *ptrEstoque);
+int listarProduto(int numProduto, produto *estoque_produtos);
 
 int remover_produto(produto **estoque_produtos, int *tamanho_estoque);
+
+float calcular_estoque(produto *estoque_produtos,int tamanho_estoque,float soma);
 
 #endif 
