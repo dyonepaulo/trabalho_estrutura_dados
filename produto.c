@@ -1,23 +1,22 @@
 #include "produto.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int i=0;
 
 
 int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
     if(ptrEstoque[numProduto].id == ID){
-        if(ID != 0){
-            printf("Produto Encontrado: \n");
-            printf("%-18s %-29s %-26s %s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+        printf("Produto Encontrado: \n");
+        printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
         
-            printf("%-19d", ptrEstoque[numProduto].id);
-            printf("%-30s", ptrEstoque[numProduto].nome);
-            printf("%-26.2f", ptrEstoque[numProduto].preco);
-            printf("%d\n", ptrEstoque[numProduto].quantidade);
+        printf("%-12d", ptrEstoque[numProduto].id);
+        printf("%-10s", ptrEstoque[numProduto].nome);
+        printf("%15.2f", ptrEstoque[numProduto].preco);
+        printf("%15d\n", ptrEstoque[numProduto].quantidade);
 
-            return 0;
-        }
+        return 0;
     }
 
     if(numProduto == 0){
@@ -33,10 +32,10 @@ int listarProduto(int numProduto, produto *ptrEstoque){
     if(numProduto == 0)    
         return 0;
 
-    printf("%-19d", ptrEstoque[numProduto-1].id);
-    printf("%-30s", ptrEstoque[numProduto-1].nome);
-    printf("%-26.2f", ptrEstoque[numProduto-1].preco);
-    printf("%d\n", ptrEstoque[numProduto-1].quantidade);
+    printf("%-12d", ptrEstoque[numProduto-1].id);
+    printf("%-10s", ptrEstoque[numProduto-1].nome);
+    printf("%15.2f", ptrEstoque[numProduto-1].preco);
+    printf("%15d\n", ptrEstoque[numProduto-1].quantidade);
     
 
     return listarProduto(numProduto-1, ptrEstoque);
@@ -53,11 +52,11 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             
             printf("Digite o nome do produto:\n");   
             scanf(" %[^\n]", (*estoque_produtos)[k].nome);
-            printf("Digite a quantidade do produto: \n");
+            printf("Digite a quantidade do produto: ");
             scanf("%d", &(*estoque_produtos)[k].quantidade);
             (*contador_id)++;
             (*estoque_produtos)[k].id = *contador_id;
-            printf("Digite o preço do produto: \n");
+            printf("digite o preço do produto: \n");
             scanf("%f", &(*estoque_produtos)[k].preco);
 
             for(int i = 0 ; i < *tamanho_estoque; i++){  //ordena os produtos pelo preço em ordem crescente
@@ -105,25 +104,37 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
 }
 
 int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
+
     int remove;
-    printf("Digite o id do produto que deseja remover:");
+
+    printf("\nDigite o id do produto que deseja remover:");
     scanf("%d", &remove);
+
     for(int i=0;i<*tamanho_estoque;i++){
-        if((*estoque_produtos)[i].id==remove){
+        if((*estoque_produtos)[i].id==remove){          //testa se o ID do produto existe
+
+            char temp_nome[30];
+            strcpy(temp_nome, (*estoque_produtos)[i].nome);         //guarda o nome do produto pra n ser perdido depoois de realocar o estoque
+
             for(int k=i;k<*tamanho_estoque-1;k++){
-                (*estoque_produtos)[k]=(*estoque_produtos)[k+1];
+                (*estoque_produtos)[k]=(*estoque_produtos)[k+1];        //move todos os produtos para a esquerda, sobrescrevendo o produto que será removido
             }
+
             (*tamanho_estoque)--;
             produto *ptr_temp=realloc(*estoque_produtos, *tamanho_estoque*sizeof(produto));
-            if(ptr_temp==NULL && *tamanho_estoque > 0){
-                printf("Erro ao realocar estoque.");
+
+            if(ptr_temp==NULL && *tamanho_estoque > 0){             //se não verificar se o estoque é maior que 0, caso seja 0 vai retornar NULL e dar erro
+                printf("\nErro ao realocar estoque.\n");
                 return 1;
             }
+
+            printf("\nO produto %s foi removido com sucesso.\n", temp_nome);
+
             *(estoque_produtos)=ptr_temp;
             return 0;
         }
     }
-    printf("\nID %d não encontrado.\n", remove);
+    printf("\nProduto com ID %d não encontrado.\n", remove);
     return 1;
 }
 
