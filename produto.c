@@ -7,24 +7,24 @@ int i=0;
 
 
 int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
-  if(ID != 0){
-    if(ptrEstoque[numProduto].id == ID){
-        printf("Produto Encontrado: \n");
-        printf("%-18s %-29s %-26s %s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+    if(ID != 0){
+        if(ptrEstoque[numProduto].id == ID){
+            printf("Produto Encontrado: \n");
+            printf("%-18s %-29s %-26s %s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
         
-        printf("%-19d", ptrEstoque[numProduto].id);
-        printf("%-30s", ptrEstoque[numProduto].nome);
-        printf("%-26.2f", ptrEstoque[numProduto].preco);
-        printf("%d\n", ptrEstoque[numProduto].quantidade);
+            printf("%-19d", ptrEstoque[numProduto].id);
+            printf("%-30s", ptrEstoque[numProduto].nome);
+            printf("%-26.2f", ptrEstoque[numProduto].preco);
+            printf("%d\n", ptrEstoque[numProduto].quantidade);
 
+            return 0;
+        }
+    }
+    
+    if(numProduto == 0){
+        printf("Produto não encontrado!\n");
         return 0;
     }
-
-    if(numProduto == 0)
-        printf("Produto não encontrado!\n");
-        
-        return 0;
-  }
   
     return buscarProduto(numProduto - 1, ptrEstoque, ID);
 }
