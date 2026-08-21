@@ -47,7 +47,7 @@ int main(){
                     printf("BUSCAR PRODUTO POR ID selecionado.\n"
                         "Digite o ID do produto que deseja buscar: ");
                     scanf("%d", &id);
-                    buscarProduto(tamanho_estoque, estoque_produtos, id);
+                    buscarProduto(tamanho_estoque-1, estoque_produtos, id);
                     break;
                 case 5:
                     printf("SAIR selecionado (PROGRAMA ENCERRADO).\n");

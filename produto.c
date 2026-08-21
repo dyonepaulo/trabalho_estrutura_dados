@@ -120,6 +120,6 @@ int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
             return 0;
         }
     }
-    printf("\nID %d não encontrado.", remove);
+    printf("\nID %d não encontrado.\n", remove);
     return 1;
 }
