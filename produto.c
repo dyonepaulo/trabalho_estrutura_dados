@@ -7,23 +7,25 @@ int i=0;
 
 
 int buscarProduto(int numProduto, produto *ptrEstoque, int ID) {
+  if(ID != 0){
     if(ptrEstoque[numProduto].id == ID){
         printf("Produto Encontrado: \n");
-        printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+        printf("%-18s %-29s %-26s %s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
         
-        printf("%-12d", ptrEstoque[numProduto].id);
-        printf("%-10s", ptrEstoque[numProduto].nome);
-        printf("%15.2f", ptrEstoque[numProduto].preco);
-        printf("%15d\n", ptrEstoque[numProduto].quantidade);
+        printf("%-19d", ptrEstoque[numProduto].id);
+        printf("%-30s", ptrEstoque[numProduto].nome);
+        printf("%-26.2f", ptrEstoque[numProduto].preco);
+        printf("%d\n", ptrEstoque[numProduto].quantidade);
 
         return 0;
     }
 
-    if(numProduto == 0){
+    if(numProduto == 0)
         printf("Produto não encontrado!\n");
+        
         return 0;
-    }
-
+  }
+  
     return buscarProduto(numProduto - 1, ptrEstoque, ID);
 }
 
@@ -32,10 +34,10 @@ int listarProduto(int numProduto, produto *ptrEstoque){
     if(numProduto == 0)    
         return 0;
 
-    printf("%-12d", ptrEstoque[numProduto-1].id);
-    printf("%-10s", ptrEstoque[numProduto-1].nome);
-    printf("%15.2f", ptrEstoque[numProduto-1].preco);
-    printf("%15d\n", ptrEstoque[numProduto-1].quantidade);
+    printf("%-19d", ptrEstoque[numProduto-1].id);
+    printf("%-30s", ptrEstoque[numProduto-1].nome);
+    printf("%-26.2f", ptrEstoque[numProduto-1].preco);
+    printf("%d\n", ptrEstoque[numProduto-1].quantidade);
     
 
     return listarProduto(numProduto-1, ptrEstoque);
@@ -52,11 +54,11 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             
             printf("Digite o nome do produto:\n");   
             scanf(" %[^\n]", (*estoque_produtos)[k].nome);
-            printf("Digite a quantidade do produto: ");
+            printf("Digite a quantidade do produto: \n");
             scanf("%d", &(*estoque_produtos)[k].quantidade);
             (*contador_id)++;
             (*estoque_produtos)[k].id = *contador_id;
-            printf("digite o preço do produto: \n");
+            printf("Digite o preço do produto: \n");
             scanf("%f", &(*estoque_produtos)[k].preco);
 
             for(int i = 0 ; i < *tamanho_estoque; i++){  //ordena os produtos pelo preço em ordem crescente
@@ -145,7 +147,7 @@ int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
     return 1;
 }
 
-float calcular_estoque(produto *estoque_produtos,int tamanho_estoque,float soma){
+float calcular_estoque(produto *estoque_produtos,int tamanho_estoque, float soma){
 
     soma += estoque_produtos[tamanho_estoque].preco * estoque_produtos[tamanho_estoque].quantidade;
 
