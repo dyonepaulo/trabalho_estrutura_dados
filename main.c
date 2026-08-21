@@ -49,7 +49,7 @@ int main(){
                     break;
                 case 3: 
                     printf("LISTAR TODOS OS PRODUTOS selecionado.\n");
-                    printf("%-11s %-11s %14s %21s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
+                    printf("%-18s %-29s %-26s %s \n", "ID", "NOME", "PREÇO", "QUANTIDADE");
                     listarProduto(tamanho_estoque, estoque_produtos);
                     break; 
                 case 4:
