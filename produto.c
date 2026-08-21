@@ -100,3 +100,26 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             break;
     }
 }
+
+int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
+    int remove;
+    printf("Digite o id do produto que deseja remover:");
+    scanf("%d", &remove);
+    for(int i=0;i<*tamanho_estoque;i++){
+        if((*estoque_produtos)[i].id==remove){
+            for(int k=i;k<*tamanho_estoque-1;k++){
+                (*estoque_produtos)[k]=(*estoque_produtos)[k+1];
+            }
+            (*tamanho_estoque)--;
+            produto *ptr_temp=realloc(*estoque_produtos, *tamanho_estoque*sizeof(produto));
+            if(ptr_temp==NULL && *tamanho_estoque > 0){
+                printf("Erro ao realocar estoque.");
+                return 1;
+            }
+            *(estoque_produtos)=ptr_temp;
+            return 0;
+        }
+    }
+    printf("ID %d não encontrado.", remove);
+    return 1;
+}
