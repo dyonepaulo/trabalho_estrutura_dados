@@ -76,7 +76,7 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             return 0;
         }
     }
-    printf("Estoque cheio, nao e possivel cadastrar mais produtos.\n-------- DESEJA AUMENTAR O ESTOQUE? --------\n"
+    printf("Estoque cheio! para cadastrar novos itens, aumente o limite do estoque.\n-------- DESEJA AUMENTAR O ESTOQUE? --------\n"
         "/ 1 - SIM /\n"
         "/ 2 - NAO /\n"
         "/ 3 - CANCELAR (encerrar programa) / \n");
