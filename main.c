@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "produto.c"
+#include "produto.h"
 #include <stdlib.h>
 
 int main(){
