@@ -132,15 +132,13 @@ int remover_produto (produto **estoque_produtos, int *tamanho_estoque){
 
             (*tamanho_estoque)--;
 
-            if(*tamanho_estoque>5){
-                produto *ptr_temp=realloc(*estoque_produtos, *tamanho_estoque*sizeof(produto));
+            produto *ptr_temp=realloc(*estoque_produtos, *tamanho_estoque*sizeof(produto));
 
-                if(ptr_temp==NULL && *tamanho_estoque > 0){             //se não verificar se o estoque é maior que 0, caso seja 0 vai retornar NULL e dar erro
-                 printf("\nErro ao realocar estoque.\n");
-                 return 1;
-                }
-                *(estoque_produtos)=ptr_temp;
+            if(ptr_temp==NULL && *tamanho_estoque > 0){             //se não verificar se o estoque é maior que 0, caso seja 0 vai retornar NULL e dar erro
+                printf("\nErro ao realocar estoque.\n");
+                return 1;
             }
+            *(estoque_produtos)=ptr_temp;
 
             printf("\nO produto %s foi removido com sucesso.\n", temp_nome);
 
