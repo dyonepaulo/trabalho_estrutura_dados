@@ -104,8 +104,12 @@ int cadastrar_produtos(produto **estoque_produtos, int* tamanho_estoque, int* co
             break;
         case 3:
             printf("Operacao cancelada.\n");
+            free(*estoque_produtos);
             exit(0);
             break;
+        default:
+            printf("Opcao invalida.\n");
+            return 0;
     }
 }
 
